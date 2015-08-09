@@ -5,5 +5,8 @@
   <%= @panel.name %>
 </p>
 
+<%= render "cards" %>
+
+<%= link_to 'Add new Card', new_panel_card_path(params[:id]), class: 'button' %> |
 <%= link_to 'Edit', edit_panel_path(@panel) %> |
 <%= link_to 'Back', panels_path %>

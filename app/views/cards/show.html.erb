@@ -10,5 +10,5 @@
   <%= @card.translation %>
 </p>
 
-<%= link_to 'Edit', edit_card_path(@card) %> |
-<%= link_to 'Back', cards_path %>
+<%= link_to 'Edit', edit_panel_card_path(@card, panel_id: params[:panel_id]) %> |
+<%= link_to 'Back', panel_cards_path %>

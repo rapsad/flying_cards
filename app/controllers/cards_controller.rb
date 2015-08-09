@@ -4,7 +4,7 @@ class CardsController < ApplicationController
 
   # GET /cards
   def index
-    @cards = Card.all
+    @cards = Card.where(panel_id: params[:panel_id])
   end
 
   # GET /cards/1
@@ -14,6 +14,7 @@ class CardsController < ApplicationController
   # GET /cards/new
   def new
     @card = Card.new
+    @card.panel = Panel.find(params[:panel_id])
   end
 
   # GET /cards/1/edit
@@ -25,7 +26,7 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
 
     if @card.save
-      redirect_to @card, notice: 'Card was successfully created.'
+      redirect_to panel_card_url(@card, panel_id: params[:panel_id]), notice: 'Card was successfully created.'
     else
       render :new
     end
@@ -34,7 +35,7 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1
   def update
     if @card.update(card_params)
-      redirect_to @card, notice: 'Card was successfully updated.'
+      redirect_to panel_card_url(@card, panel_id: params[:panel_id]), notice: 'Card was successfully updated.'
     else
       render :edit
     end
@@ -43,7 +44,7 @@ class CardsController < ApplicationController
   # DELETE /cards/1
   def destroy
     @card.destroy
-    redirect_to cards_url, notice: 'Card was successfully destroyed.'
+    redirect_to panel_cards_url, notice: 'Card was successfully destroyed.'
   end
 
   private
@@ -54,6 +55,6 @@ class CardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def card_params
-      params.require(:card).permit(:text, :translation)
+      params.require(:card).permit(:text, :translation, :panel_id)
     end
 end

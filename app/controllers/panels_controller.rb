@@ -9,6 +9,7 @@ class PanelsController < ApplicationController
 
   # GET /panels/1
   def show
+    @cards = @panel.cards
   end
 
   # GET /panels/new
@@ -49,7 +50,7 @@ class PanelsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_panel
-      @panel = Panel.find(params[:id])
+      @panel = Panel.includes(:cards).find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
