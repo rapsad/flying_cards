@@ -5,6 +5,7 @@ class CardsController < ApplicationController
   # GET /cards
   def index
     @cards = Card.where(panel_id: params[:panel_id])
+      .paginate(:page => params[:page], :per_page => 30)
   end
 
   # GET /cards/1
