@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'cards#index'
+  resources :panels do
+    resources :cards
+  end
+  devise_for :users
 
-  resources :cards
+  root to: 'panels#index'
 end
