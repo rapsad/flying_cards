@@ -1,0 +1,20 @@
+<div class="cards">
+  <div class="card">
+    <div class="card-image">
+      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains-4.png" alt="">
+    </div>
+    <div class="card-header">
+      Try!
+    </div>
+    <div class="card-copy">
+      <p><%= @card.text %></p>
+    </div>
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Check it!</a>
+      <div id="js-expander-content" class="expander-content">
+        <p><%= @card.translation %></p>
+        <%= link_to "Next card", panel_learn_path(id: @card_next.id) %>
+      </div>
+    </div>
+  </div>
+</div>

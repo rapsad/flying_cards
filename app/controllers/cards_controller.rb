@@ -5,7 +5,7 @@ class CardsController < ApplicationController
   # GET /cards
   def index
     @cards = Card.where(panel_id: params[:panel_id])
-      .paginate(:page => params[:page], :per_page => 30)
+      .paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /cards/1
@@ -25,9 +25,8 @@ class CardsController < ApplicationController
   # POST /cards
   def create
     @card = Card.new(card_params)
-
     if @card.save
-      redirect_to panel_card_url(@card, panel_id: params[:panel_id]), notice: 'Card was successfully created.'
+      redirect_to panel_cards_url(panel_id: params[:panel_id]), notice: 'Card was successfully created.'
     else
       render :new
     end
@@ -35,8 +34,9 @@ class CardsController < ApplicationController
 
   # PATCH/PUT /cards/1
   def update
+
     if @card.update(card_params)
-      redirect_to panel_card_url(@card, panel_id: params[:panel_id]), notice: 'Card was successfully updated.'
+      redirect_to panel_cards_url(panel_id: params[:panel_id]), notice: 'Card was successfully updated.'
     else
       render :edit
     end

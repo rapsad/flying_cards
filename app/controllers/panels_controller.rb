@@ -47,6 +47,10 @@ class PanelsController < ApplicationController
     redirect_to panels_url, notice: 'Panel was successfully destroyed.'
   end
 
+  def learn
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_panel

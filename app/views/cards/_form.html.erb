@@ -1,8 +1,8 @@
-<%= simple_form_for(@card, url: panel_cards_path) do |f| %>
+<%= simple_form_for(@card, url: panel_cards_path, method: :post) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :text %>
+    <%= f.input :text, autofocus: true %>
     <%= f.input :translation %>
     <%= f.association :panel %>
   </div>

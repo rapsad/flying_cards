@@ -8,4 +8,9 @@ $(document).ready ->
         $('#js-navigation-menu').removeAttr 'style'
       return
     return
-  return
+
+  expanderTrigger = document.getElementById('js-expander-trigger')
+  expanderContent = document.getElementById('js-expander-content')
+  $('#js-expander-trigger').click ->
+    $(this).toggleClass 'expander-hidden'
+    return
