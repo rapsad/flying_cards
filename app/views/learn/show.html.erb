@@ -10,10 +10,29 @@
       <p><%= @card.text %></p>
     </div>
     <div class="expander">
-      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Check it!</a>
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden" data-keybinding="c">
+        <span class="shortcut">C</span>heck it!
+      </a>
       <div id="js-expander-content" class="expander-content">
         <p><%= @card.translation %></p>
-        <%= link_to "Next card", panel_learn_path(id: @card_next.id) %>
+        <div class="actions">
+
+          <div class="action">
+            <%= link_to panel_learn_path(id: @card_next.id), data: { keybinding: 'k' } do %>
+              I <span class="shortcut">k</span>now!
+            <% end %>
+          </div>
+          <div class="action">
+            <%= link_to panel_learn_path(id: @card_next.id), data: { keybinding: 'd' } do %>
+              I <span class="shortcut">d</span>o not know :(
+            <% end %>
+          </div>
+          <div class="action">
+            <%= link_to panel_learn_path(id: @card_next.id), data: { keybinding: 'n' } do %>
+              <span class="shortcut">N</span>ext card
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

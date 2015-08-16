@@ -27,6 +27,7 @@ gem "title"
 gem "uglifier"
 gem "devise"
 gem 'will_paginate', '~> 3.0.6'
+gem 'mousetrap-rails'
 
 group :development do
   gem "spring"
